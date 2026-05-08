@@ -28,7 +28,7 @@ export function DiscoverClient({ initialSongs, initialGenre }: DiscoverClientPro
     setHasMore(true)
     router.push(g === 'All' ? '/discover' : `/discover?genre=${encodeURIComponent(g)}`)
     startTransition(async () => {
-      const result = await getSongs(g === 'All' ? undefined : g)
+      const result = await getSongs()
       if (result.success) {
         setSongs(result.data)
         setOffset(result.data.length)
@@ -39,7 +39,7 @@ export function DiscoverClient({ initialSongs, initialGenre }: DiscoverClientPro
 
   function loadMore() {
     startTransition(async () => {
-      const result = await getSongs(genre === 'All' ? undefined : genre, 20, offset)
+      const result = await getSongs()
       if (result.success) {
         setSongs((prev) => [...prev, ...result.data])
         setOffset((prev) => prev + result.data.length)
