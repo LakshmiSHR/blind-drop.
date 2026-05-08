@@ -22,7 +22,7 @@ export default async function ListenPage({ params }: ListenPageProps) {
   const result = await getSongById(id)
   if (!result.success) notFound()
 
-  const existingRating = await getUserRating(id)
+  const existingRating = null
 
   return (
     <ListenClient
