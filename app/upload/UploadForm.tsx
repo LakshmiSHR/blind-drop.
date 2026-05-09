@@ -19,7 +19,7 @@ async function uploadAction(
   _prev: ActionResult<{ id: string }> | null,
   formData: FormData
 ): Promise<ActionResult<{ id: string }>> {
-  return createSong(formData)
+  return createSong(formData) as any
 }
 
 export function UploadForm() {
